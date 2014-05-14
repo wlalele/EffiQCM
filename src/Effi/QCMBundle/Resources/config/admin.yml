@@ -42,3 +42,14 @@ services:
             - ~
         calls:
             - [ setTranslationDomain, [EffiQCMBundle]]
+
+    sonata.admin.qcm:
+        class: Effi\QCMBundle\Admin\QCMAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "QCM" }
+        arguments:
+            - ~
+            - Effi\QCMBundle\Entity\QCM
+            - ~
+        calls:
+            - [ setTranslationDomain, [EffiQCMBundle]]
