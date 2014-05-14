@@ -1,0 +1,7 @@
+parameters:
+#    effi_qcm.example.class: Effi\QCMBundle\Example
+
+services:
+#    effi_qcm.example:
+#        class: %effi_qcm.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

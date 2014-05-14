@@ -1,0 +1,4 @@
+effi_qcm:
+    resource: "@EffiQCMBundle/Resources/config/routing.yml"
+    prefix:   /
+
