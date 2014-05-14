@@ -30,4 +30,47 @@ class User extends BaseUser
         parent::__construct();
         $this->answers = new ArrayCollection();
     }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Add answers
+     *
+     * @param \Effi\QCMBundle\Entity\Choice $answers
+     * @return User
+     */
+    public function addAnswer(\Effi\QCMBundle\Entity\Choice $answers)
+    {
+        $this->answers[] = $answers;
+
+        return $this;
+    }
+
+    /**
+     * Remove answers
+     *
+     * @param \Effi\QCMBundle\Entity\Choice $answers
+     */
+    public function removeAnswer(\Effi\QCMBundle\Entity\Choice $answers)
+    {
+        $this->answers->removeElement($answers);
+    }
+
+    /**
+     * Get answers
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAnswers()
+    {
+        return $this->answers;
+    }
 }

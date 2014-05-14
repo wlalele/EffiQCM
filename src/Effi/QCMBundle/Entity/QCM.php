@@ -55,4 +55,83 @@ class QCM
     {
         return $this->id;
     }
+
+    /**
+     * Set label
+     *
+     * @param string $label
+     * @return QCM
+     */
+    public function setLabel($label)
+    {
+        $this->label = $label;
+
+        return $this;
+    }
+
+    /**
+     * Get label
+     *
+     * @return string 
+     */
+    public function getLabel()
+    {
+        return $this->label;
+    }
+
+    /**
+     * Set theme
+     *
+     * @param \Effi\QCMBundle\Entity\Theme $theme
+     * @return QCM
+     */
+    public function setTheme(\Effi\QCMBundle\Entity\Theme $theme = null)
+    {
+        $this->theme = $theme;
+
+        return $this;
+    }
+
+    /**
+     * Get theme
+     *
+     * @return \Effi\QCMBundle\Entity\Theme 
+     */
+    public function getTheme()
+    {
+        return $this->theme;
+    }
+
+    /**
+     * Add questions
+     *
+     * @param \Effi\QCMBundle\Entity\Question $questions
+     * @return QCM
+     */
+    public function addQuestion(\Effi\QCMBundle\Entity\Question $questions)
+    {
+        $this->questions[] = $questions;
+
+        return $this;
+    }
+
+    /**
+     * Remove questions
+     *
+     * @param \Effi\QCMBundle\Entity\Question $questions
+     */
+    public function removeQuestion(\Effi\QCMBundle\Entity\Question $questions)
+    {
+        $this->questions->removeElement($questions);
+    }
+
+    /**
+     * Get questions
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getQuestions()
+    {
+        return $this->questions;
+    }
 }

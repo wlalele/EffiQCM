@@ -21,7 +21,10 @@
         "incenteev/composer-parameter-handler": "~2.0",
 
         "friendsofsymfony/user-bundle": "~2.0@dev",
-        "sonata-project/easy-extends-bundle": "dev-master"
+        "sonata-project/easy-extends-bundle": "dev-master",
+        "sonata-project/admin-bundle": "dev-master",
+        "sonata-project/jquery-bundle": "dev-master",
+        "sonata-project/doctrine-orm-admin-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [

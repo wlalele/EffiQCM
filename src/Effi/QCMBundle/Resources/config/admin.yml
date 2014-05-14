@@ -1,0 +1,11 @@
+services:
+    sonata.admin.theme:
+        class: Effi\QCMBundle\Admin\ThemeAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Theme" }
+        arguments:
+            - ~
+            - Effi\QCMBundle\Entity\Theme
+            - ~
+        calls:
+            - [ setTranslationDomain, [EffiQCMBundle]]

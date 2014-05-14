@@ -60,4 +60,106 @@ class Question
     {
         return $this->id;
     }
+
+    /**
+     * Set label
+     *
+     * @param string $label
+     * @return Question
+     */
+    public function setLabel($label)
+    {
+        $this->label = $label;
+
+        return $this;
+    }
+
+    /**
+     * Get label
+     *
+     * @return string 
+     */
+    public function getLabel()
+    {
+        return $this->label;
+    }
+
+    /**
+     * Set qcm
+     *
+     * @param \Effi\QCMBundle\Entity\QCM $qcm
+     * @return Question
+     */
+    public function setQcm(\Effi\QCMBundle\Entity\QCM $qcm = null)
+    {
+        $this->qcm = $qcm;
+
+        return $this;
+    }
+
+    /**
+     * Get qcm
+     *
+     * @return \Effi\QCMBundle\Entity\QCM 
+     */
+    public function getQcm()
+    {
+        return $this->qcm;
+    }
+
+    /**
+     * Set author
+     *
+     * @param \Effi\UserBundle\Entity\User $author
+     * @return Question
+     */
+    public function setAuthor(\Effi\UserBundle\Entity\User $author = null)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return \Effi\UserBundle\Entity\User 
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * Add answers
+     *
+     * @param \Effi\QCMBundle\Entity\Answer $answers
+     * @return Question
+     */
+    public function addAnswer(\Effi\QCMBundle\Entity\Answer $answers)
+    {
+        $this->answers[] = $answers;
+
+        return $this;
+    }
+
+    /**
+     * Remove answers
+     *
+     * @param \Effi\QCMBundle\Entity\Answer $answers
+     */
+    public function removeAnswer(\Effi\QCMBundle\Entity\Answer $answers)
+    {
+        $this->answers->removeElement($answers);
+    }
+
+    /**
+     * Get answers
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAnswers()
+    {
+        return $this->answers;
+    }
 }
