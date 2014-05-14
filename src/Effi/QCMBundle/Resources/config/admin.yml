@@ -10,24 +10,13 @@ services:
         calls:
             - [ setTranslationDomain, [EffiQCMBundle]]
 
-    sonata.admin.choice:
-        class: Effi\QCMBundle\Admin\ChoiceAdmin
+    sonata.admin.qcm:
+        class: Effi\QCMBundle\Admin\QCMAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Choice" }
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "QCM" }
         arguments:
             - ~
-            - Effi\QCMBundle\Entity\Choice
-            - ~
-        calls:
-            - [ setTranslationDomain, [EffiQCMBundle]]
-
-    sonata.admin.answer:
-        class: Effi\QCMBundle\Admin\AnswerAdmin
-        tags:
-            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Answer" }
-        arguments:
-            - ~
-            - Effi\QCMBundle\Entity\Answer
+            - Effi\QCMBundle\Entity\QCM
             - ~
         calls:
             - [ setTranslationDomain, [EffiQCMBundle]]
@@ -43,13 +32,24 @@ services:
         calls:
             - [ setTranslationDomain, [EffiQCMBundle]]
 
-    sonata.admin.qcm:
-        class: Effi\QCMBundle\Admin\QCMAdmin
+    sonata.admin.answer:
+        class: Effi\QCMBundle\Admin\AnswerAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Content", label: "QCM" }
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Answer" }
         arguments:
             - ~
-            - Effi\QCMBundle\Entity\QCM
+            - Effi\QCMBundle\Entity\Answer
+            - ~
+        calls:
+            - [ setTranslationDomain, [EffiQCMBundle]]
+
+    sonata.admin.choice:
+        class: Effi\QCMBundle\Admin\ChoiceAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Choice" }
+        arguments:
+            - ~
+            - Effi\QCMBundle\Entity\Choice
             - ~
         calls:
             - [ setTranslationDomain, [EffiQCMBundle]]
