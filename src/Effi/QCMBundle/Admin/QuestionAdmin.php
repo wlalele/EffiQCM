@@ -16,7 +16,7 @@ class QuestionAdmin extends Admin
         $formMapper
             ->add('author', 'entity', array('class' => 'Effi\UserBundle\Entity\User'))
             ->add('label', 'text')
-            ->add('qcm', 'entity', array('class' => 'Effi\QCMBundle\Entity\QCM'))
+            ->add('qcm', 'entity', array('class' => 'Effi\QCMBundle\Entity\QCM', 'property' => 'label'))
         ;
     }
 
@@ -26,7 +26,6 @@ class QuestionAdmin extends Admin
         $datagridMapper
             ->add('label')
             ->add('author')
-            ->add('qcm')
             ->add('answers')
         ;
     }
@@ -35,11 +34,11 @@ class QuestionAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
-            ->add('author')
-            ->add('label')
-            ->add('qcm')
-            ->add('answers')
+            ->addIdentifier('id')
+            ->addIdentifier('author')
+            ->addIdentifier('label')
+            ->addIdentifier('qcm', null, array('associated_tostring' => 'getLabel'))
+            ->addIdentifier('answers', null, array('associated_tostring' => 'getLabel'))
         ;
     }
 }
