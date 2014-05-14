@@ -15,8 +15,7 @@ class QCMAdmin extends Admin
     {
         $formMapper
             ->add('label', 'text')
-            ->add('theme', 'entity', array('class' => 'Effi\QCMBundle\Entity\Theme'))
-            ->add('question', 'entity', array('class' => 'Effi\QCMBundle\Entity\Question'))
+            ->add('theme', 'entity', array('class' => 'Effi\QCMBundle\Entity\Theme', 'property' => 'label'))
         ;
     }
 
@@ -25,8 +24,6 @@ class QCMAdmin extends Admin
     {
         $datagridMapper
             ->add('label')
-            ->add('theme')
-            ->add('question')
         ;
     }
 
@@ -34,10 +31,9 @@ class QCMAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
-            ->add('label')
-            ->add('theme')
-            ->add('question')
+            ->addIdentifier('id')
+            ->addIdentifier('label')
+            ->addIdentifier('theme', null, array('associated_tostring' => 'getLabel'))
         ;
     }
 }

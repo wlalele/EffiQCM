@@ -38,7 +38,7 @@ class QCM
     /**
      * @ORM\OneToMany(targetEntity="Question", mappedBy="qcm")
      */
-    protected $questions;
+    protected $questions = null;
 
     public function __construct()
     {
@@ -133,5 +133,15 @@ class QCM
     public function getQuestions()
     {
         return $this->questions;
+    }
+
+    /**
+     * Set questions
+     *
+     * @param \Effi\QCMBundle\Entity\Question $questions
+     */
+    public function setQuestions($questions)
+    {
+        $this->questions = $questions;
     }
 }
