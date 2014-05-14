@@ -1,0 +1,3 @@
+effi_qcm_homepage:
+    pattern:  /
+    defaults: { _controller: EffiQCMBundle:Default:index }
