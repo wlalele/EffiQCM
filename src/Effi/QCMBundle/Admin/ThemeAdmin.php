@@ -23,7 +23,6 @@ class ThemeAdmin extends Admin
     {
         $datagridMapper
             ->add('label')
-            ->add('qcms')
         ;
     }
 
@@ -31,9 +30,9 @@ class ThemeAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
-            ->add('label')
-            ->add('qcms')
+            ->addIdentifier('id')
+            ->addIdentifier('label')
+            ->addIdentifier('qcms', null, array('associated_tostring' => 'getLabel'))
         ;
     }
 }
