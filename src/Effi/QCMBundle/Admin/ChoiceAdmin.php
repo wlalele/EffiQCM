@@ -14,8 +14,8 @@ class ChoiceAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('user', 'entity', array('class' => 'Effi/UserBundle/Entity/User'))
-            ->add('question', 'entity', array('class' => 'Effi/QCMBundle/Entity/Question'))
+            ->add('user', 'entity', array('class' => 'Effi\UserBundle\Entity\User'))
+            ->add('question', 'entity', array('class' => 'Effi\QCMBundle\Entity\Question', 'property' => 'label'))
         ;
     }
 
@@ -24,7 +24,6 @@ class ChoiceAdmin extends Admin
     {
         $datagridMapper
             ->add('user')
-            ->add('question')
         ;
     }
 
@@ -34,7 +33,7 @@ class ChoiceAdmin extends Admin
         $listMapper
             ->add('id')
             ->add('user')
-            ->add('question')
+            ->add('question', null, array('associated_tostring' => 'getLabel'))
         ;
     }
 }
