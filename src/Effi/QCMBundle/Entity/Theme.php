@@ -3,6 +3,7 @@
 namespace Effi\QCMBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Theme
@@ -21,6 +22,22 @@ class Theme
      */
     private $id;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     */
+    private $label;
+
+    /**
+     * @ORM\OneToMany(targetEntity="QCM", mappedBy="theme")
+     */
+    protected $qcms;
+
+    public function __construct()
+    {
+        $this->qcms = new ArrayCollection();
+    }
 
     /**
      * Get id

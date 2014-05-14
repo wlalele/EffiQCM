@@ -21,6 +21,25 @@ class Answer
      */
     private $id;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     */
+    private $label;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_valid", type="boolean")
+     */
+    private $isValid;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Question", inversedBy="answers")
+     * @ORM\JoinColumn(name="question_id", referencedColumnName="id")
+     */
+    protected $question;
 
     /**
      * Get id

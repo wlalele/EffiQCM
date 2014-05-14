@@ -21,6 +21,11 @@ class Choice
      */
     private $id;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Question")
+     * @ORM\JoinColumn(name="question_id", referencedColumnName="id")
+     */
+    protected $question;
 
     /**
      * Get id
