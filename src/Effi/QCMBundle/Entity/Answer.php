@@ -42,6 +42,12 @@ class Answer
     protected $question;
 
     /**
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
+     */
+    protected $author;
+
+    /**
      * Get id
      *
      * @return integer 

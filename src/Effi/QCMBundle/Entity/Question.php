@@ -36,6 +36,12 @@ class Question
     protected $qcm;
 
     /**
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
+     */
+    protected $author;
+
+    /**
      * @ORM\OneToMany(targetEntity="Answer", mappedBy="question")
      */
     protected $answers;
