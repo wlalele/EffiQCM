@@ -28,7 +28,7 @@ class Choice
     protected $question;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Effi\UserBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="Effi\UserBundle\Entity\User", inversedBy="answers")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;
