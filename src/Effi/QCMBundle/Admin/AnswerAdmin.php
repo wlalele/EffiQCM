@@ -17,7 +17,7 @@ class AnswerAdmin extends Admin
             ->add('author', 'entity', array('class' => 'Effi\UserBundle\Entity\User'))
             ->add('label', 'text')
             ->add('isValid', 'checkbox', array('required' => false))
-            ->add('question', 'entity', array('class' => 'Effi\QCMBundle\Entity\Question'))
+            ->add('question', 'entity', array('class' => 'Effi\QCMBundle\Entity\Question', 'property' => 'label'))
         ;
     }
 
@@ -28,7 +28,6 @@ class AnswerAdmin extends Admin
             ->add('label')
             ->add('author')
             ->add('isValid')
-            ->add('question')
         ;
     }
 
@@ -36,11 +35,11 @@ class AnswerAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
-            ->add('label')
-            ->add('isValid')
-            ->add('question')
-            ->add('author')
+            ->addIdentifier('id')
+            ->addIdentifier('author')
+            ->addIdentifier('label')
+            ->addIdentifier('isValid')
+            ->add('question', null, array('associated_tostring' => 'getLabel'))
         ;
     }
 }
