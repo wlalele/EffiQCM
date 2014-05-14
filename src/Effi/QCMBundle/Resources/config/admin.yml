@@ -9,3 +9,14 @@ services:
             - ~
         calls:
             - [ setTranslationDomain, [EffiQCMBundle]]
+
+    sonata.admin.choice:
+        class: Effi\QCMBundle\Admin\ChoiceAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Choice" }
+        arguments:
+            - ~
+            - Effi\QCMBundle\Entity\Choice
+            - ~
+        calls:
+            - [ setTranslationDomain, [EffiQCMBundle]]
