@@ -21,18 +21,13 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="Choice", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Effi\QCMBundle\Entity\Choice", mappedBy="user")
      */
     protected $answers;
 
     public function __construct()
     {
-        $this->answers = new ArrayCollection();
-    }
-
-    public function __construct()
-    {
         parent::__construct();
-        // your own logic
+        $this->answers = new ArrayCollection();
     }
 }
