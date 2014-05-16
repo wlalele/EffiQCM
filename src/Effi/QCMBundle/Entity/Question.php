@@ -162,4 +162,15 @@ class Question
     {
         return $this->answers;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getValidAnswer() {
+        foreach($this->getAnswers() as $answer) {
+            if($answer->getIsValid()) {
+                return $answer;
+            }
+        }
+    }
 }

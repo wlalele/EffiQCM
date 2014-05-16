@@ -144,4 +144,26 @@ class QCM
     {
         $this->questions = $questions;
     }
+
+    /**
+     * @param \Effi\UserBundle\Entity\User $user
+     * @return int
+     */
+    public function getNote(\Effi\UserBundle\Entity\User $user) {
+        $count = 0;
+        $note = 0;
+        foreach($user->getAnswers() as $answer) {
+            if($answer->getAnswer()->getQuestion()->getQCM()->getId() == $this->id) {
+                if($answer->getAnswer()->getId() == $answer->getAnswer()->getQuestion()->getValidAnswer()->getId()) {
+                    $note += 1;
+                }
+                $count++;
+            }
+        }
+        if($count == count($this->getQuestions())) {
+            return $note . '/' . $count . ' (' . round($note/$count)*100 . '%)';
+        } else {
+            return null;
+        }
+    }
 }

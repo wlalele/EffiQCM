@@ -11,6 +11,7 @@ class DefaultController extends Controller
         $qcms = $this->getDoctrine()
             ->getRepository('EffiQCMBundle:QCM')
             ->findAll();
+
         return $this->render('EffiQCMBundle:Default:index.html.twig', array('qcms' => $qcms));
     }
 }

@@ -7,14 +7,12 @@
             <th>Nom</th>
             <th>Theme</th>
             <th>Note</th>
-            <th>Complété</th>
         </tr>
         {% for qcm in qcms %}
         <tr>
             <td><a href="">{{ qcm.label }}</a></td>
             <td>{{ qcm.theme.label }}</td>
-            <td></td>
-            <td></td>
+            <td>{{ qcm.note(app.user) }}</td>
         </tr>
         {% endfor %}
     </table>
