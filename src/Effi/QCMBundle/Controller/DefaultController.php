@@ -24,6 +24,12 @@ class DefaultController extends Controller
             ->getRepository('EffiQCMBundle:Question')
             ->find($questionId);
 
+        if (!$question) {
+            throw $this->createNotFoundException(
+                'Aucune question trouvée pour cet id'
+            );
+        }
+
         try {
             $anwser = $this->getDoctrine()
                 ->getRepository('EffiQCMBundle:Choice')
@@ -52,6 +58,10 @@ class DefaultController extends Controller
             if($next) {
                 return $this->redirect($this->generateUrl('effi_qcm_question', array('questionId' => $next->getId())));
             } else {
+                $this->get('session')->getFlashBag()->add(
+                    'notice',
+                    'QCM "' . $question->getQCM()->getLabel() . '" complété!'
+                );
                 return $this->redirect($this->generateUrl('effi_qcm_homepage'));
             }
         }
