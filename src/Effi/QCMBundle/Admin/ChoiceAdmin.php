@@ -15,7 +15,7 @@ class ChoiceAdmin extends Admin
     {
         $formMapper
             ->add('user', 'entity', array('class' => 'Effi\UserBundle\Entity\User'))
-            ->add('question', 'entity', array('class' => 'Effi\QCMBundle\Entity\Question', 'property' => 'label'))
+            ->add('answer', 'entity', array('class' => 'Effi\QCMBundle\Entity\Answer', 'property' => 'label'))
         ;
     }
 
@@ -33,7 +33,7 @@ class ChoiceAdmin extends Admin
         $listMapper
             ->add('id')
             ->add('user')
-            ->add('question', null, array('associated_tostring' => 'getLabel'))
+            ->add('answer', null, array('associated_tostring' => 'getLabel'))
         ;
     }
 }

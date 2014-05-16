@@ -22,10 +22,10 @@ class Choice
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Question")
-     * @ORM\JoinColumn(name="question_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Answer")
+     * @ORM\JoinColumn(name="answer_id", referencedColumnName="id")
      */
-    protected $question;
+    protected $answer;
 
     /**
      * @ORM\ManyToOne(targetEntity="Effi\UserBundle\Entity\User", inversedBy="answers")
@@ -44,26 +44,26 @@ class Choice
     }
 
     /**
-     * Set question
+     * Set answer
      *
-     * @param \Effi\QCMBundle\Entity\Question $question
+     * @param \Effi\QCMBundle\Entity\Answer $answer
      * @return Choice
      */
-    public function setQuestion(\Effi\QCMBundle\Entity\Question $question = null)
+    public function setAnswer(\Effi\QCMBundle\Entity\Answer $answer = null)
     {
-        $this->question = $question;
+        $this->answer = $answer;
 
         return $this;
     }
 
     /**
-     * Get question
+     * Get answer
      *
-     * @return \Effi\QCMBundle\Entity\Question 
+     * @return \Effi\QCMBundle\Entity\Answer 
      */
-    public function getQuestion()
+    public function getAnswer()
     {
-        return $this->question;
+        return $this->answer;
     }
 
     /**
