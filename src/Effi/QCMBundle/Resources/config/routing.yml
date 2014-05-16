@@ -1,3 +1,7 @@
 effi_qcm_homepage:
     pattern:  /
     defaults: { _controller: EffiQCMBundle:Default:index }
+
+effi_qcm_question:
+    pattern:  /question/{questionId}
+    defaults: { _controller: EffiQCMBundle:Default:question }

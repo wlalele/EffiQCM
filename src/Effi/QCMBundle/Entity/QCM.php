@@ -166,4 +166,24 @@ class QCM
             return null;
         }
     }
+
+    /**
+     * @param \Effi\UserBundle\Entity\User $user
+     * @return mixed
+     */
+    public function getNextQuestion(\Effi\UserBundle\Entity\User $user) {
+        foreach($this->getQuestions() as $question) {
+            $found = false;
+            foreach($user->getAnswers() as $choice) {
+                if($choice->getAnswer()->getQuestion() == $question) {
+                    $found = true;
+                    break;
+                }
+            }
+            if(!$found) {
+                return $question;
+            }
+        }
+        return false;
+    }
 }

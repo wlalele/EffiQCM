@@ -1,0 +1,23 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1>{{ question.label }}</h1>
+
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    <div>
+        {{ form_errors(form.answer) }}
+        {% for answer in form.answer %}
+            <div>
+                {{ form_widget(answer) }}
+                {{ form_label(answer) }}
+            </div>
+        {% endfor %}
+    </div>
+
+    <button type="submit" class="btn btn-default">Valider</button>
+    <a href="{{ path('effi_qcm_homepage') }}" class="btn btn-default">Retour à la liste</a>
+
+    {{ form_end(form) }}
+{% endblock %}

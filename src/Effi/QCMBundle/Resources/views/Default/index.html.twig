@@ -10,7 +10,8 @@
         </tr>
         {% for qcm in qcms %}
         <tr>
-            <td><a href="">{{ qcm.label }}</a></td>
+            {% set next = qcm.nextQuestion(app.user) %}
+            <td>{% if next %}<a href="{{ path('effi_qcm_question', {questionId: next.id}) }}">{{ qcm.label }}</a>{% else %}{{ qcm.label }}{% endif %}</td>
             <td>{{ qcm.theme.label }}</td>
             <td>{{ qcm.note(app.user) }}</td>
         </tr>
