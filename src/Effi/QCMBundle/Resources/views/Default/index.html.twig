@@ -1,1 +1,21 @@
-Hello {{ name }}!
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1>Vos QCMs</h1>
+    <table class="table table-striped">
+        <tr>
+            <th>Nom</th>
+            <th>Theme</th>
+            <th>Note</th>
+            <th>Complété</th>
+        </tr>
+        {% for qcm in qcms %}
+        <tr>
+            <td><a href="">{{ qcm.label }}</a></td>
+            <td>{{ qcm.theme.label }}</td>
+            <td></td>
+            <td></td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
