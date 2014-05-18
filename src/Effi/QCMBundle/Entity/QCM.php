@@ -161,7 +161,7 @@ class QCM
             }
         }
         if($count == count($this->getQuestions())) {
-            return $note . '/' . $count . ' (' . round($note/$count)*100 . '%)';
+            return $note . '/' . $count . ' (' . round(($note/$count)*100) . '%)';
         } else {
             return null;
         }
