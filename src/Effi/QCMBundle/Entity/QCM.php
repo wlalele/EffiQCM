@@ -154,7 +154,7 @@ class QCM
         $note = 0;
         foreach($user->getAnswers() as $answer) {
             if($answer->getAnswer()->getQuestion()->getQCM()->getId() == $this->id) {
-                if($answer->getAnswer()->getId() == $answer->getAnswer()->getQuestion()->getValidAnswer()->getId()) {
+                if($answer->getAnswer()->getIsValid()) {
                     $note += 1;
                 }
                 $count++;
