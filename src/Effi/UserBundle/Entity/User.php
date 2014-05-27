@@ -25,10 +25,16 @@ class User extends BaseUser
      */
     protected $answers;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Effi\QCMBundle\Entity\Notation", mappedBy="user")
+     */
+    protected $notations;
+
     public function __construct()
     {
         parent::__construct();
         $this->answers = new ArrayCollection();
+        $this->notations = new ArrayCollection();
     }
 
     /**
@@ -72,5 +78,38 @@ class User extends BaseUser
     public function getAnswers()
     {
         return $this->answers;
+    }
+
+    /**
+     * Add notations
+     *
+     * @param \Effi\QCMBundle\Entity\Notation $notations
+     * @return User
+     */
+    public function addNotation(\Effi\QCMBundle\Entity\Notation $notations)
+    {
+        $this->notations[] = $notations;
+
+        return $this;
+    }
+
+    /**
+     * Remove notations
+     *
+     * @param \Effi\QCMBundle\Entity\Notation $notations
+     */
+    public function removeNotation(\Effi\QCMBundle\Entity\Notation $notations)
+    {
+        $this->notations->removeElement($notations);
+    }
+
+    /**
+     * Get notations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getNotations()
+    {
+        return $this->notations;
     }
 }

@@ -18,8 +18,9 @@
 
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="{{ path('effi_qcm_homepage') }}">Accueil</a></li>
-                            <li><a href="{{ path('effi_qcm_homepage') }}">Résultats</a></li>
+                            <li {% if app.request.get('_route') == 'effi_qcm_homepage' %}class="active"{% endif %}><a href="{{ path('effi_qcm_homepage') }}">QCMs Actifs</a></li>
+                            <li {% if app.request.get('_route') == 'effi_qcm_my_results' %}class="active"{% endif %}><a href="{{ path('effi_qcm_my_results') }}">Vos résultats</a></li>
+                            <li {% if app.request.get('_route') == 'effi_qcm_results' %}class="active"{% endif %}><a href="{{ path('effi_qcm_results') }}">Résultats des élèves</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <p class="navbar-text">Bienvenue {{ app.user.username }}</p>

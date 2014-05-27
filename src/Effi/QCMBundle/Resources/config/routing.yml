@@ -5,3 +5,11 @@ effi_qcm_homepage:
 effi_qcm_question:
     pattern:  /question/{questionId}
     defaults: { _controller: EffiQCMBundle:Default:question }
+
+effi_qcm_my_results:
+    pattern:  /mes_resultats
+    defaults: { _controller: EffiQCMBundle:Default:myResults }
+
+effi_qcm_results:
+    pattern:  /resultats
+    defaults: { _controller: EffiQCMBundle:Default:results }

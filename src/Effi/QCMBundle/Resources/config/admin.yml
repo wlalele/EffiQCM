@@ -53,3 +53,14 @@ services:
             - ~
         calls:
             - [ setTranslationDomain, [EffiQCMBundle]]
+
+    sonata.admin.notation:
+        class: Effi\QCMBundle\Admin\NotationAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Notation" }
+        arguments:
+            - ~
+            - Effi\QCMBundle\Entity\Notation
+            - ~
+        calls:
+            - [ setTranslationDomain, [EffiQCMBundle]]

@@ -42,7 +42,7 @@ class Question
     protected $author;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Theme", inversedBy="qcms")
+     * @ORM\ManyToOne(targetEntity="Theme", inversedBy="questions")
      * @ORM\JoinColumn(name="theme_id", referencedColumnName="id")
      */
     protected $theme;

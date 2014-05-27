@@ -2,6 +2,7 @@
 
 namespace Effi\QCMBundle\Controller;
 
+use Effi\QCMBundle\Entity\Notation;
 use Effi\QCMBundle\Form\Type\QuestionType;
 use Proxies\__CG__\Effi\QCMBundle\Entity\Choice;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -67,6 +68,12 @@ class DefaultController extends Controller
             if($next) {
                 return $this->redirect($this->generateUrl('effi_qcm_question', array('questionId' => $next->getId())));
             } else {
+                $notation = new Notation();
+                $notation->setNotation($question->getQCM()->getNote($this->getUser()));
+                $notation->setQcm($question->getQCM());
+                $notation->setUser($this->getUser());
+                $em->persist($notation);
+                $em->flush();
                 $this->get('session')->getFlashBag()->add(
                     'notice',
                     'QCM "' . $question->getQCM()->getLabel() . '" complété!'
@@ -76,5 +83,31 @@ class DefaultController extends Controller
         }
 
         return $this->render('EffiQCMBundle:Default:question.html.twig', array('question' => $question, 'form' => $form->createView()));
+    }
+
+    public function myResultsAction()
+    {
+        $notations = $this->getDoctrine()
+            ->getRepository('EffiQCMBundle:Notation')
+            ->createQueryBuilder('n')
+            ->join('n.qcm', 'q')
+            ->where('n.user = :user')
+            ->setParameter('user', $this->getUser())
+            ->getQuery()
+            ->getResult();
+
+        return $this->render('EffiQCMBundle:Default:myResults.html.twig', array('notations' => $notations));
+    }
+
+    public function resultsAction()
+    {
+        $qcms = $this->getDoctrine()
+            ->getRepository('EffiQCMBundle:QCM')
+            ->createQueryBuilder('q')
+            ->where('q.publishedResult = 1')
+            ->getQuery()
+            ->getResult();
+
+        return $this->render('EffiQCMBundle:Default:results.html.twig', array('qcms' => $qcms));
     }
 }

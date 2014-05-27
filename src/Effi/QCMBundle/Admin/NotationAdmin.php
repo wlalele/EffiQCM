@@ -1,5 +1,4 @@
 <?php
-// src/Effi/QCMBundle/Admin/QCMAdmin.php
 
 namespace Effi\QCMBundle\Admin;
 
@@ -8,36 +7,32 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class QCMAdmin extends Admin
+class NotationAdmin extends Admin
 {
-    // FORMULAIRE EDITION AJOUT
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('label', 'text')
-            ->add('published', 'checkbox', array('required' => false))
-            ->add('publishedResult', 'checkbox', array('required' => false))
-            ->add('limitDate', 'date')
+            ->add('qcm', 'entity', array('class' => 'Effi\QCMBundle\Entity\QCM'))
+            ->add('user', 'entity', array('class' => 'Effi\UserBundle\Entity\User'))
+            ->add('notation', 'text')
         ;
     }
 
-    // FORMULAIRE FILTRE
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('label')
+            ->add('qcm')
+            ->add('user')
         ;
     }
 
-    // FORMULAIRE LISTE
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
             ->addIdentifier('id')
-            ->addIdentifier('label')
-            ->addIdentifier('published')
-            ->addIdentifier('publishedResult')
-            ->addIdentifier('limitDate')
+            ->addIdentifier('qcm')
+            ->addIdentifier('user')
+            ->addIdentifier('notation')
         ;
     }
 }

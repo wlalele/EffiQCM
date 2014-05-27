@@ -1,0 +1,21 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1>Résultats des élèves</h1>
+
+    {% for qcm in qcms %}
+        <h3>{{ qcm.label }}</h3>
+        <table class="table table-striped">
+            <tr>
+                <th>Nom</th>
+                <th>Note</th>
+            </tr>
+            {% for result in qcm.notations %}
+                <tr>
+                    <td>{{ result.user.userName }}</td>
+                    <td>{{ result.notation }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endfor %}
+{% endblock %}

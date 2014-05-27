@@ -37,6 +37,13 @@ class QCM
     private $published;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="published_result", type="boolean", nullable=true)
+     */
+    private $publishedResult;
+
+    /**
      * @var date
      *
      * @ORM\Column(name="limit_date", type="date")
@@ -46,13 +53,23 @@ class QCM
     /**
      * @ORM\OneToMany(targetEntity="Question", mappedBy="qcm")
      */
-    protected $questions = null;
+    protected $questions;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Notation", mappedBy="qcm")
+     */
+    protected $notations;
 
     public function __construct()
     {
         $this->questions = new ArrayCollection();
+        $this->notations = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->label;
+    }
 
     /**
      * Get id
@@ -131,6 +148,49 @@ class QCM
     }
 
     /**
+     * Add notations
+     *
+     * @param \Effi\QCMBundle\Entity\Notation $notations
+     * @return QCM
+     */
+    public function addNotation(\Effi\QCMBundle\Entity\Notation $notations)
+    {
+        $this->notations[] = notations;
+
+        return $this;
+    }
+
+    /**
+     * Remove notations
+     *
+     * @param \Effi\QCMBundle\Entity\Notation $notations
+     */
+    public function removeNotation(\Effi\QCMBundle\Entity\Notation $notations)
+    {
+        $this->notations->removeElement($notations);
+    }
+
+    /**
+     * Get notations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getNotations()
+    {
+        return $this->notations;
+    }
+
+    /**
+     * Set notations
+     *
+     * @param \Effi\QCMBundle\Entity\Notation $notations
+     */
+    public function setNotations($notations)
+    {
+        $this->notations = $notations;
+    }
+
+    /**
      * @param \Effi\UserBundle\Entity\User $user
      * @return int
      */
@@ -145,7 +205,7 @@ class QCM
                 $count++;
             }
         }
-        if($count == 0) return '0/0';
+        if($count == 0) return null;
         if($count == count($this->getQuestions())) {
             return $note . '/' . $count . ' (' . round(($note/$count)*100) . '%)';
         } else {
@@ -203,5 +263,21 @@ class QCM
     public function setLimitDate($limitDate)
     {
         $this->limitDate = $limitDate;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getPublishedResult()
+    {
+        return $this->publishedResult;
+    }
+
+    /**
+     * @param boolean $publishedResult
+     */
+    public function setPublishedResult($publishedResult)
+    {
+        $this->publishedResult = $publishedResult;
     }
 }

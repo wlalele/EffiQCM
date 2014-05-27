@@ -30,13 +30,13 @@ class Theme
     private $label;
 
     /**
-     * @ORM\OneToMany(targetEntity="QCM", mappedBy="theme")
+     * @ORM\OneToMany(targetEntity="Question", mappedBy="theme")
      */
-    protected $qcms;
+    protected $questions;
 
     public function __construct()
     {
-        $this->qcms = new ArrayCollection();
+        $this->questions = new ArrayCollection();
     }
 
     public function  __toString()
@@ -78,35 +78,45 @@ class Theme
     }
 
     /**
-     * Add qcms
+     * Add questions
      *
-     * @param \Effi\QCMBundle\Entity\QCM $qcms
+     * @param \Effi\QCMBundle\Entity\Question $questions
      * @return Theme
      */
-    public function addQcm(\Effi\QCMBundle\Entity\QCM $qcms)
+    public function addQuestion(\Effi\QCMBundle\Entity\Question $questions)
     {
-        $this->qcms[] = $qcms;
+        $this->questions[] = $questions;
 
         return $this;
     }
 
     /**
-     * Remove qcms
+     * Remove questions
      *
-     * @param \Effi\QCMBundle\Entity\QCM $qcms
+     * @param \Effi\QCMBundle\Entity\Question $questions
      */
-    public function removeQcm(\Effi\QCMBundle\Entity\QCM $qcms)
+    public function removeQuestion(\Effi\QCMBundle\Entity\Question $questions)
     {
-        $this->qcms->removeElement($qcms);
+        $this->questions->removeElement($questions);
     }
 
     /**
-     * Get qcms
+     * Get questions
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getQcms()
+    public function geQuestions()
     {
-        return $this->qcms;
+        return $this->questions;
+    }
+
+    /**
+     * Get questions
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getQuestions()
+    {
+        return $this->questions;
     }
 }
