@@ -13,18 +13,27 @@ class DefaultController extends Controller
     {
         $qcms = $this->getDoctrine()
             ->getRepository('EffiQCMBundle:QCM')
-            ->findAll();
+            ->createQueryBuilder('q')
+            ->where('q.published = 1')
+            ->getQuery()
+            ->getResult();
 
         return $this->render('EffiQCMBundle:Default:index.html.twig', array('qcms' => $qcms));
     }
 
     public function questionAction(Request $request, $questionId)
     {
-        $question = $this->getDoctrine()
-            ->getRepository('EffiQCMBundle:Question')
-            ->find($questionId);
-
-        if (!$question) {
+        try {
+            $question = $this->getDoctrine()
+                ->getRepository('EffiQCMBundle:Question')
+                ->createQueryBuilder('q')
+                ->join('q.qcm', 'qcm')
+                ->where('q.id = :questionId')
+                ->andWhere('qcm.published = 1')
+                ->setParameter('questionId', $questionId)
+                ->getQuery()
+                ->getSingleResult();
+        } catch (\Doctrine\Orm\NoResultException $e) {
             throw $this->createNotFoundException(
                 'Aucune question trouvée pour cet id'
             );

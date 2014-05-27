@@ -15,6 +15,8 @@ class QCMAdmin extends Admin
     {
         $formMapper
             ->add('label', 'text')
+            ->add('published', 'checkbox', array('required' => false))
+            ->add('limitDate', 'date')
         ;
     }
 
@@ -32,6 +34,8 @@ class QCMAdmin extends Admin
         $listMapper
             ->addIdentifier('id')
             ->addIdentifier('label')
+            ->addIdentifier('published')
+            ->addIdentifier('limitDate')
         ;
     }
 }

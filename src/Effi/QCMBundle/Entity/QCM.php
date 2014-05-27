@@ -30,6 +30,20 @@ class QCM
     private $label;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $published;
+
+    /**
+     * @var date
+     *
+     * @ORM\Column(name="limit_date", type="date")
+     */
+    private $limitDate;
+
+    /**
      * @ORM\OneToMany(targetEntity="Question", mappedBy="qcm")
      */
     protected $questions = null;
@@ -131,6 +145,7 @@ class QCM
                 $count++;
             }
         }
+        if($count == 0) return '0/0';
         if($count == count($this->getQuestions())) {
             return $note . '/' . $count . ' (' . round(($note/$count)*100) . '%)';
         } else {
@@ -156,5 +171,37 @@ class QCM
             }
         }
         return false;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getPublished()
+    {
+        return $this->published;
+    }
+
+    /**
+     * @param boolean $published
+     */
+    public function setPublished($published)
+    {
+        $this->published = $published;
+    }
+
+    /**
+     * @return date
+     */
+    public function getLimitDate()
+    {
+        return $this->limitDate;
+    }
+
+    /**
+     * @param date $limitDate
+     */
+    public function setLimitDate($limitDate)
+    {
+        $this->limitDate = $limitDate;
     }
 }
