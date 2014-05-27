@@ -30,12 +30,6 @@ class QCM
     private $label;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Theme", inversedBy="qcms")
-     * @ORM\JoinColumn(name="theme_id", referencedColumnName="id")
-     */
-    protected $theme;
-
-    /**
      * @ORM\OneToMany(targetEntity="Question", mappedBy="qcm")
      */
     protected $questions = null;
@@ -77,29 +71,6 @@ class QCM
     public function getLabel()
     {
         return $this->label;
-    }
-
-    /**
-     * Set theme
-     *
-     * @param \Effi\QCMBundle\Entity\Theme $theme
-     * @return QCM
-     */
-    public function setTheme(\Effi\QCMBundle\Entity\Theme $theme = null)
-    {
-        $this->theme = $theme;
-
-        return $this;
-    }
-
-    /**
-     * Get theme
-     *
-     * @return \Effi\QCMBundle\Entity\Theme 
-     */
-    public function getTheme()
-    {
-        return $this->theme;
     }
 
     /**

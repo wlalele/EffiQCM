@@ -42,6 +42,12 @@ class Question
     protected $author;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Theme", inversedBy="qcms")
+     * @ORM\JoinColumn(name="theme_id", referencedColumnName="id")
+     */
+    protected $theme;
+
+    /**
      * @ORM\OneToMany(targetEntity="Answer", mappedBy="question")
      */
     protected $answers;
@@ -128,6 +134,29 @@ class Question
     public function getAuthor()
     {
         return $this->author;
+    }
+
+    /**
+     * Set theme
+     *
+     * @param \Effi\QCMBundle\Entity\Theme $theme
+     * @return Question
+     */
+    public function setTheme(\Effi\QCMBundle\Entity\Theme $theme = null)
+    {
+        $this->theme = $theme;
+
+        return $this;
+    }
+
+    /**
+     * Get theme
+     *
+     * @return \Effi\QCMBundle\Entity\Theme
+     */
+    public function getTheme()
+    {
+        return $this->theme;
     }
 
     /**

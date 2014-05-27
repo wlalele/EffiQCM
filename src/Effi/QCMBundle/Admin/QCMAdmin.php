@@ -15,7 +15,6 @@ class QCMAdmin extends Admin
     {
         $formMapper
             ->add('label', 'text')
-            ->add('theme', 'entity', array('class' => 'Effi\QCMBundle\Entity\Theme', 'property' => 'label'))
         ;
     }
 
@@ -33,7 +32,6 @@ class QCMAdmin extends Admin
         $listMapper
             ->addIdentifier('id')
             ->addIdentifier('label')
-            ->addIdentifier('theme', null, array('associated_tostring' => 'getLabel'))
         ;
     }
 }

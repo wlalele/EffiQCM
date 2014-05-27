@@ -5,14 +5,12 @@
     <table class="table table-striped">
         <tr>
             <th>Nom</th>
-            <th>Theme</th>
             <th>Note</th>
         </tr>
         {% for qcm in qcms %}
         <tr>
             {% set next = qcm.nextQuestion(app.user) %}
             <td>{% if next %}<a href="{{ path('effi_qcm_question', {questionId: next.id}) }}">{{ qcm.label }}</a>{% else %}{{ qcm.label }}{% endif %}</td>
-            <td>{{ qcm.theme.label }}</td>
             <td>{{ qcm.note(app.user) }}</td>
         </tr>
         {% endfor %}

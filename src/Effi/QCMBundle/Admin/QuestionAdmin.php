@@ -17,6 +17,7 @@ class QuestionAdmin extends Admin
             ->add('author', 'entity', array('class' => 'Effi\UserBundle\Entity\User'))
             ->add('label', 'text')
             ->add('qcm', 'entity', array('class' => 'Effi\QCMBundle\Entity\QCM', 'property' => 'label'))
+            ->add('theme', 'entity', array('class' => 'Effi\QCMBundle\Entity\Theme', 'property' => 'label'))
         ;
     }
 
@@ -38,6 +39,7 @@ class QuestionAdmin extends Admin
             ->addIdentifier('label')
             ->addIdentifier('qcm', null, array('associated_tostring' => 'getLabel'))
             ->addIdentifier('answers', null, array('associated_tostring' => 'getLabel'))
+            ->addIdentifier('theme', null, array('associated_tostring' => 'getLabel'))
         ;
     }
 }

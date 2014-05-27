@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-    <h1>{{ question.label }}</h1>
+    <h1>{{ question.label }} <small>{{ question.theme.label }}</small></h1>
 
     {{ form_start(form) }}
     {{ form_errors(form) }}
