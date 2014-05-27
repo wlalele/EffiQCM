@@ -39,6 +39,11 @@ class Theme
         $this->qcms = new ArrayCollection();
     }
 
+    public function  __toString()
+    {
+        return $this->label;
+    }
+
     /**
      * Get id
      *

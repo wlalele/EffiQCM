@@ -27,6 +27,7 @@ class QuestionAdmin extends Admin
         $datagridMapper
             ->add('label')
             ->add('author')
+            ->add('theme')
         ;
     }
 
