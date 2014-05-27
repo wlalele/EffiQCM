@@ -16,6 +16,8 @@ class DefaultController extends Controller
             ->getRepository('EffiQCMBundle:QCM')
             ->createQueryBuilder('q')
             ->where('q.published = 1')
+            ->andWhere('q.limitDate >= :date')
+            ->setParameter('date', date('Y-m-d'))
             ->getQuery()
             ->getResult();
 
