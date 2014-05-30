@@ -19,6 +19,7 @@ class AppKernel extends Kernel
 
 
             new FOS\UserBundle\FOSUserBundle(),
+            new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
             new Effi\UserBundle\EffiUserBundle(),
             new Effi\QCMBundle\EffiQCMBundle(),
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),

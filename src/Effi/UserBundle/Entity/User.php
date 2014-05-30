@@ -3,7 +3,7 @@
 
 namespace Effi\UserBundle\Entity;
 
-use FOS\UserBundle\Model\User as BaseUser;
+use Sonata\UserBundle\Entity\BaseUser as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
