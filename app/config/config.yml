@@ -87,3 +87,6 @@ sonata_block:
         sonata.block.service.rss:
         sonata.user.block.menu:    # used to display the menu in profile pages
         sonata.user.block.account: # used to display menu option (login option)
+
+sonata_admin:
+    title:      EffiQCM Admin
