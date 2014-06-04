@@ -32,7 +32,7 @@ class ThemeAdmin extends Admin
         $listMapper
             ->addIdentifier('id')
             ->addIdentifier('label')
-            ->addIdentifier('qcms', null, array('associated_tostring' => 'getLabel'))
+            ->addIdentifier('questions', null, array('associated_tostring' => 'getLabel'))
         ;
     }
 }

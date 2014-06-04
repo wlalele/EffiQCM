@@ -17,7 +17,7 @@ class DefaultController extends Controller
             ->createQueryBuilder('q')
             ->where('q.published = 1')
             ->andWhere('q.limitDate >= :date')
-            ->setParameter('date', date('Y-m-d'))
+            ->setParameter('date', date('Y-m-d H:i:s'))
             ->getQuery()
             ->getResult();
 
