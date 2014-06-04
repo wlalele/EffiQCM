@@ -28,6 +28,7 @@ class AnswerAdmin extends Admin
             ->add('label')
             ->add('author')
             ->add('isValid')
+            ->add('question')
         ;
     }
 

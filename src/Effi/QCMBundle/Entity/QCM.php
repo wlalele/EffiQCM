@@ -44,9 +44,9 @@ class QCM
     private $publishedResult;
 
     /**
-     * @var date
+     * @var datetime
      *
-     * @ORM\Column(name="limit_date", type="date")
+     * @ORM\Column(name="limit_date", type="datetime")
      */
     private $limitDate;
 
@@ -250,7 +250,7 @@ class QCM
     }
 
     /**
-     * @return date
+     * @return datetime
      */
     public function getLimitDate()
     {
@@ -258,7 +258,7 @@ class QCM
     }
 
     /**
-     * @param date $limitDate
+     * @param datetime $limitDate
      */
     public function setLimitDate($limitDate)
     {

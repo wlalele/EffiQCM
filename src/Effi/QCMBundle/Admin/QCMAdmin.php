@@ -17,7 +17,7 @@ class QCMAdmin extends Admin
             ->add('label', 'text')
             ->add('published', 'checkbox', array('required' => false))
             ->add('publishedResult', 'checkbox', array('required' => false))
-            ->add('limitDate', 'date')
+            ->add('limitDate', 'datetime')
         ;
     }
 
