@@ -23,7 +23,7 @@
                             <li {% if app.request.get('_route') == 'effi_qcm_results' %}class="active"{% endif %}><a href="{{ path('effi_qcm_results') }}">Résultats des élèves</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            <p class="navbar-text">Bienvenue {{ app.user.username }}</p>
+                            <p class="navbar-text">Bienvenue <a href="{{ path('sonata_user_profile_show') }}" >{{ app.user.username }}</a></p>
                             {% if is_granted("ROLE_ADMIN") %}
                             <li><a href="{{ path('sonata_admin_dashboard') }}">Administration</a></li>
                             {% endif %}
