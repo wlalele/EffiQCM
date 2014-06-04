@@ -28,13 +28,15 @@ security:
         # -> end custom configuration
         # defaut login area for standard users
         main:
-            pattern:      .*
+            pattern:      ^/
             form_login:
                 provider:       fos_userbundle
                 login_path:     /login
                 use_forward:    false
                 check_path:     /login_check
                 failure_path:   null
+                default_target_path: /
+                always_use_default_target_path: true
             logout:       true
             anonymous:    true
 
