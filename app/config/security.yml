@@ -18,7 +18,9 @@ security:
                 csrf_provider: form.csrf_provider
                 always_use_default_target_path: true
                 default_target_path: /
-            logout:       true
+            logout:       
+                path:   /admin/logout
+                target: /
             anonymous:    true
 
     access_control:
@@ -27,3 +29,7 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/, role: ROLE_USER }
+
+        - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/login-check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
